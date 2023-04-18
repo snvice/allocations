@@ -101,7 +101,7 @@ if search_button and search_term:
     for col in df_str.columns:
         for i, row in enumerate(df_str[col]):
             if search_term in row:
-                st.write(f"{search_term} is - {col}  batch {row}.")
+                st.write(f" {col}  {row}.")
                 match_found = True
     if not match_found:
         st.write(f"No match found for '{search_term}'.")
