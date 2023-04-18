@@ -14,7 +14,8 @@ import streamlit as st
 lottie_animation = {"src": "https://assets7.lottiefiles.com/packages/lf20_v5rypyyu.json"}
 
 # Display the animation in Streamlit
-stl.st_lottie(load_lottie(lottie_animation), speed=1, width=100, height=100)
+stl.st_lottie(load_json(lottie_animation["src"]), speed=1, width=100, height=100)
+
 
 #########################################################################################################################################################
 
