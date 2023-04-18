@@ -87,19 +87,22 @@ st.write(df,index=False)
 ##########################################################################################################################################################
 
 # Add a text input widget to allow the user to search
-search_num = st.text_input("Search")
+search_term = st.text_input("Search")
 
 # Add a button to trigger the search
 search_button = st.button("Search")
 
+# Convert dataframe to string
+df_str = df.astype(str)
+
 # Check if the search term matches any columns
-if search_button and search_num:
+if search_button and search_term:
     match_found = False
-    for col in df.columns:
-        if df[col].dtype in ['int64', 'float64'] and col != 'date':
-            if str(search_num) in df[col].astype(str).values:
-                st.write(f"'{search_num}' was found in column '{col}'.")
-                match_found = True
+    for col in df_str.columns:
+        if search_term in df_str[col].values:
+            st.write(f"'{search_term}' was found in column '{col}'.")
+            match_found = True
     if not match_found:
-        st.write(f"No match found for '{search_num}'.")
+        st.write(f"No match found for '{search_term}'.")
+
 
