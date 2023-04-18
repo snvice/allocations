@@ -90,7 +90,7 @@ st.write(df,index=False)
 number_input = st.number_input('Number', value=0)
 
 # Find columns containing the number
-matching_columns = [col for col in df.columns if df[col].dtype == 'float64' and number_input in df[col].values]
+matching_columns = [col for col in df.columns if isinstance(df[col][0], str) and str(number_input) in df[col].values]
 
 # Display the result
 if matching_columns:
