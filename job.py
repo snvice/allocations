@@ -8,4 +8,4 @@ df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.
 st.header('Allocations')
 
 # Display the table
-st.write(df)
+st.write(df,index=False)
