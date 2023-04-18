@@ -95,18 +95,15 @@ search_button = st.button("Search")
 # Convert dataframe to string
 df_str = df.astype(str)
 
-# Check if the search term matches any columns
+# Check if the search term matches any columns and rows
 if search_button and search_term:
     match_found = False
     for col in df_str.columns:
-        for row in df_str[col].values:
+        for i, row in enumerate(df_str[col]):
             if search_term in row:
-                st.write(f"'{search_term}' was found in column '{col}'.")
+                st.write(f"'{search_term}' was found in row {i+1} of column '{col}'.")
                 match_found = True
-                break  # Break out of the row loop if a match is found
         if match_found:
-            break  # Break out of the column loop if a match is found
-    if not match_found:
-        st.write(f"No match found for '{search_term}'.")
-
-
+            match_found = False
+        else:
+            st.write(f"No match found for '{search_term}' in column '{col}'.")
