@@ -120,11 +120,11 @@ def load_lottieurl(url: str):
     return r.json()
 
 # Load the Lottie animation from a URL
-lottie_url_hello = "https://assets6.lottiefiles.com/packages/lf20_C67qsN3hAk.json"
-lottie_hello = load_lottieurl(lottie_url_hello)
+lottie_url_helloo = "https://assets6.lottiefiles.com/packages/lf20_C67qsN3hAk.json"
+lottie_helloo = load_lottieurl(lottie_url_helloo)
 
 # Display the animation with reduced dimensions
-st_lottie(lottie_hello, speed=1, width=250, height=250, key="hello")
+st_lottie(lottie_helloo, speed=1, width=250, height=250, key="hello")
 
 
 ###########################################################################################################################################################
