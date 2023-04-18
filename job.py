@@ -54,7 +54,7 @@ st.plotly_chart(fig, margin=(20, 20, 20, 20))
 #############################################################################################################################################################
 
 # Add a header
-st.subheader('N0. of assignments in progress')
+st.subheader('No. of assignments in progress')
 
 # Count non-null values for each column and plot as horizontal stacked bar chart
 fig, ax = plt.subplots()
@@ -86,34 +86,19 @@ st.write(df,index=False)
 
 ##########################################################################################################################################################
 
-# Define the function to search for the keyword in the dataframe
-def search_df(df, keyword):
-    for col in df.columns:
-        if keyword in col.lower():
-            return col
-    return None
+# Create the search box for user input
+number_input = st.number_input('Number', value=0)
 
-# Define the Streamlit app
-def app():
-       
-    # Create the search box for user input
-    keyword = st.text_input('Keyword', '')
+# Find columns containing the number
+matching_columns = [col for col in df.columns if df[col].dtype == 'float64' and number_input in df[col].values]
 
-    # Call the search_df function to find the column containing the keyword
-    result = search_df(df, keyword.lower())
-
-    # Display the result
-    if result:
-        st.success(f"The keyword '{keyword}' was found in the column '{result}'.")
-    else:
-        st.warning(f"The keyword '{keyword}' was not found in any of the columns.")
-
-        
-if __name__ == '__main__':
-    app()
-  
-
-
+# Display the result
+if matching_columns:
+    st.success(f"The number '{number_input}' was found in the following columns:")
+    for col in matching_columns:
+        st.write(col)
+else:
+    st.warning(f"The number '{number_input}' was not found in any of the columns.")
 
 
 
