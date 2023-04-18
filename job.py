@@ -86,16 +86,18 @@ st.write(df,index=False)
 
 ##########################################################################################################################################################
 
-# Create the search box for user input
-number_input = st.number_input('Number', value=0)
+# get user input for search word
+search_word = input("Enter a search word: ")
 
-# Find columns containing the number
-matching_columns = [col for col in df.columns if df[col].dtype == 'O' and str(number_input) in df[col].values]
+# iterate over columns in dataframe and search for search_word
+found_columns = []
+for col in df.columns:
+    if df[col].str.contains(search_word).any():
+        found_columns.append(col)
 
-# Display the result
-if matching_columns:
-    st.success(f"The number '{number_input}' was found in the following columns:")
-    for col in matching_columns:
-        st.write(col)
+# print results
+if len(found_columns) > 0:
+    print(f"The search word '{search_word}' was found in the following columns: {', '.join(found_columns)}")
 else:
-    st.warning(f"The number '{number_input}' was not found in any of the columns.")
+    print(f"The search word '{search_word}' was not found in any columns.")
+
