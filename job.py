@@ -6,6 +6,22 @@ import streamlit as st
 
 ##########################################################################################################################################################
 
+from streamlit_lottie import st_lottie
+
+url = "https://github.com/snvice/allocations/blob/main/welcome.lottie?raw=true"
+
+st.title("Adding Lottie Animation in Streamlit WebApp")
+
+st_lottie(url,
+	reverse=True,
+	height=400,
+	width=400,
+	speed=1,
+	loop=True,
+	quality='high',
+	key='Car'
+)
+
 #########################################################################################################################################################
 
 # Read the CSV file
