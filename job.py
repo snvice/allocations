@@ -11,18 +11,13 @@ import streamlit as st
 ##########################################################################################################################################################
 import streamlit as st
 import streamlit_lottie as stl
-import urllib.request
-import json
 
 # Load the Lottie animation file
-lottie_animation = {"src": "https://assets7.lottiefiles.com/packages/lf20_v5rypyyu.json"}
-
-# Load the JSON data from the URL
-response = urllib.request.urlopen(lottie_animation["src"])
-lottie_data = json.loads(response.read())
+lottie_url = "https://assets3.lottiefiles.com/packages/lf20_BHgrGd.json"
 
 # Display the animation in Streamlit
-stl.st_lottie(lottie_data, speed=1, width=100, height=100)
+stl.st_lottie(load_lottie(lottie_url), speed=1, width=200, height=200)
+
 
 
 
