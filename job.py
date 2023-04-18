@@ -29,7 +29,7 @@ lottie_url_hello = "https://assets7.lottiefiles.com/private_files/lf30_kbu3mkpv.
 lottie_hello = load_lottieurl(lottie_url_hello)
 
 # Display the animation with reduced dimensions
-st_lottie(lottie_hello, speed=1, width=150, height=150, key="hello")
+st_lottie(lottie_hello, speed=1, width=250, height=250, key="hello")
 
 #########################################################################################################################################################
 
