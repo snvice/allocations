@@ -90,7 +90,7 @@ st.write(df,index=False)
 search_term = st.sidebar.text_input("Search", "")
 
 # Filter the DataFrame based on the search term
-filtered_df = df[df["column_name"].str.contains(search_term, case=False)]
+filtered_df = df[df.apply(lambda row: search_term.lower() in str(row).lower(), axis=1)]
 
 # Display the filtered DataFrame
 st.dataframe(filtered_df)
