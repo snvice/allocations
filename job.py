@@ -86,30 +86,30 @@ st.write(df,index=False)
 
 ##########################################################################################################################################################
 
-# Define the app layout
-st.set_page_config(page_title='Column Search', page_icon=':mag:', layout='wide')
-st.title('Find Column by Keyword')
-
-# Add a search box for the keyword
-keyword = st.text_input('Enter a keyword to search:')
-
-# Define a function to search for the keyword in the dataframe columns
-def search_columns(keyword):
-    matches = []
+# Define the function to search for the keyword in the dataframe
+def search_df(df, keyword):
     for col in df.columns:
-        if keyword.lower() in col.lower():
-            matches.append(col)
-    return matches
+        if keyword in col.lower():
+            return col
+    return None
 
-# Display the search results
-if keyword:
-    matches = search_columns(keyword)
-    if matches:
-        st.write('The keyword "{}" was found in the following columns:'.format(keyword))
-        for match in matches:
-            st.write('- {}'.format(match))
+# Define the Streamlit app
+def app():
+    st.title('Find Column by Keyword')
+    st.write('Enter a keyword to find the column containing that keyword in the dataframe:')
+    
+    # Create the search box for user input
+    keyword = st.text_input('Keyword', '')
+
+    # Call the search_df function to find the column containing the keyword
+    result = search_df(df, keyword.lower())
+
+    # Display the result
+    if result:
+        st.success(f"The keyword '{keyword}' was found in the column '{result}'.")
     else:
-        st.write('No matches found for the keyword "{}".'.format(keyword))
+        st.warning(f"The keyword '{keyword}' was not found in any of the columns.")
+
 
 
 
