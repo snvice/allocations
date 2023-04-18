@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Read the CSV file
 df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
@@ -51,6 +53,27 @@ st.plotly_chart(fig, margin=(20, 20, 20, 20))
 
 #############################################################################################################################################################
 
+# Count non-null values for each column and plot as horizontal stacked bar chart
+fig, ax = plt.subplots()
+df.notnull().sum().plot(kind='barh', stacked=True, color=sns.color_palette('rocket'))
+
+# Set labels and title
+ax.set_xlabel('Count')
+ax.set_title('Pending')
+
+# Remove the background and show only the lines
+ax.set_facecolor('none')
+ax.spines['bottom'].set_color('gray')
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['left'].set_visible(False)
+ax.tick_params(axis='y', which='both', length=0)
+
+# Display the plot in Streamlit
+st.pyplot(fig)
+
+
+#############################################################################################################################################################
 
 # Add a header
 st.subheader('Allocations')
