@@ -86,18 +86,20 @@ st.write(df,index=False)
 
 ##########################################################################################################################################################
 
-# Create a search box
-search_term = st.text_input("Search for a name:")
+# Create a sidebar text input for the search query
+search_query = st.sidebar.text_input('Search for a fruit')
 
-# Filter the DataFrame based on the search term
-filtered_df = df[df["Name"].str.contains(search_term, case=False)]
+# Filter the data based on the search query
+filtered_data = [fruit for fruit in data if search_query.lower() in fruit.lower()]
 
-# Display the filtered DataFrame
-if not filtered_df.empty:
-    st.write(f"Showing results for '{search_term}':")
-    st.write(filtered_df.to_string(index=False))
+# Display the filtered data
+if filtered_data:
+    st.write('Here are the fruits that match your search:')
+    for fruit in filtered_data:
+        st.write(fruit)
 else:
-    st.write("No results found.")
+    st.write('No fruits match your search')
+
 
 
 
