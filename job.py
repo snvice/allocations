@@ -7,20 +7,23 @@ import streamlit as st
 ##########################################################################################################################################################
 
 from streamlit_lottie import st_lottie
+from streamlit_lottie import st_lottie_spinner
 
-url = "https://github.com/snvice/allocations/blob/main/welcome.lottie?raw=true"
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
 
-st.title("Adding Lottie Animation in Streamlit WebApp")
+lottie_url = "https://raw.githubusercontent.com/snvice/allocations/main/giraffe.json"
+lottie_json = load_lottieurl(lottie_url)
+st_lottie(lottie_json)
 
-st_lottie(url,
-	reverse=True,
-	height=400,
-	width=400,
-	speed=1,
-	loop=True,
-	quality='high'
-	
-)
+if st.button("Download"):
+    with st_lottie_spinner(lottie_json)
+        time.sleep(5)
+    st.balloons()
+
 
 #########################################################################################################################################################
 
