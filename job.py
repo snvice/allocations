@@ -6,6 +6,13 @@ import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import time
+
+st.title("Welcome to my Streamlit App!")
+
+with st.spinner('Loading...'):
+    time.sleep(2)
+
 # Read the CSV file
 df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
 
