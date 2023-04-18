@@ -87,17 +87,17 @@ st.write(df,index=False)
 ##########################################################################################################################################################
 
 # Create a search box
-search_term = st.text_input("Batch no. ")
+search_term = st.text_input("Search for a name:")
 
 # Filter the DataFrame based on the search term
-filtered_data = data[data.apply(lambda row: row.astype(str).str.contains(search_term).any(), axis=1)]
+filtered_df = df[df["Name"].str.contains(search_term, case=False)]
 
 # Display the filtered DataFrame
-if not filtered_data.empty:
-    st.write("Showing results for term: ", search_term)
-    st.write(filtered_data)
+if not filtered_df.empty:
+    st.write(f"Showing results for '{search_term}':")
+    st.write(filtered_df)
 else:
-    st.write("No results found for term: ", search_term)
+    st.write("No results found.")
 
 
 
