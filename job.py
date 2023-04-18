@@ -54,7 +54,7 @@ st.plotly_chart(fig, margin=(20, 20, 20, 20))
 #############################################################################################################################################################
 
 # Add a header
-st.subheader('Assignments in progress')
+st.subheader('N0. of assignments in progress')
 
 # Count non-null values for each column and plot as horizontal stacked bar chart
 fig, ax = plt.subplots()
