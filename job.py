@@ -6,10 +6,6 @@ import streamlit as st
 
 ##########################################################################################################################################################
 
-
-
-##########################################################################################################################################################
-
 # Read the CSV file
 df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
 
@@ -87,3 +83,22 @@ st.subheader('Allocations')
 
 # Display the table
 st.write(df,index=False)
+
+##########################################################################################################################################################
+
+# Create a search box
+search_term = st.text_input("Batch no. ")
+
+# Filter the DataFrame based on the search term
+filtered_data = data[data.apply(lambda row: row.astype(str).str.contains(search_term).any(), axis=1)]
+
+# Display the filtered DataFrame
+if not filtered_data.empty:
+    st.write("Showing results for term: ", search_term)
+    st.write(filtered_data)
+else:
+    st.write("No results found for term: ", search_term)
+
+
+
+
