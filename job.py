@@ -99,9 +99,13 @@ df_str = df.astype(str)
 if search_button and search_term:
     match_found = False
     for col in df_str.columns:
-        if search_term in df_str[col].values:
-            st.write(f"'{search_term}' was found in column '{col}'.")
-            match_found = True
+        for row in df_str[col].values:
+            if search_term in row:
+                st.write(f"'{search_term}' was found in column '{col}'.")
+                match_found = True
+                break  # Break out of the row loop if a match is found
+        if match_found:
+            break  # Break out of the column loop if a match is found
     if not match_found:
         st.write(f"No match found for '{search_term}'.")
 
