@@ -9,17 +9,6 @@ import streamlit as st
 
 ##########################################################################################################################################################
 
-import streamlit as st
-import st_lottie
-
-# Load the Lottie animation
-welcome_lottie = st_lottie.load_animation('https://github.com/snvice/allocations/raw/main/welcome.json')
-
-# Render the Lottie animation
-st_lottie.json(welcome_lottie, speed=1, width=800, height=600, key="welcome")
-
-
-
 
 #########################################################################################################################################################
 
