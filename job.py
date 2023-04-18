@@ -54,7 +54,7 @@ st.plotly_chart(fig, margin=(20, 20, 20, 20))
 #############################################################################################################################################################
 
 # Add a header
-st.subheader('Assignments still in progress per individual')
+st.subheader('Assignments in progress')
 
 # Count non-null values for each column and plot as horizontal stacked bar chart
 fig, ax = plt.subplots()
@@ -62,7 +62,7 @@ df.notnull().sum().plot(kind='barh', stacked=True, color=sns.color_palette('rock
 
 # Set labels and title
 ax.set_xlabel('Count')
-ax.set_title('Pending')
+#ax.set_title('Pending')
 
 # Remove the background and show only the lines
 ax.set_facecolor('none')
