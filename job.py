@@ -6,17 +6,16 @@ import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit_lottie as stl
-
+import streamlit as st
 
 ##########################################################################################################################################################
 
-import streamlit as st
-
 # Load the Lottie animation file
-lottie_animation = {"src": "https://lottiefiles.com/137171-welcome-hand"}
+lottie_animation = {"src": "https://assets7.lottiefiles.com/packages/lf20_v5rypyyu.json"}
 
 # Display the animation in Streamlit
-stl(load_lottie(lottie_animation), speed=1, width=100, height=100)
+st_lottie(load_lottie(lottie_animation), speed=1, width=100, height=100)
+
 
 #########################################################################################################################################################
 
