@@ -86,36 +86,18 @@ st.write(df,index=False)
 
 ##########################################################################################################################################################
 
-# Define the function to search for keywords in the DataFrame
-def search_dataframe(df, keywords):
-    results = []
-    for column in df.columns:
-        for keyword in keywords:
-            if keyword.lower() in str(df[column]).lower():
-                results.append(column)
-                break
-    return results
+# Add a text input widget to allow the user to search
+search_term = st.text_input("Search")
 
-# Create a text input box for the user to enter their search query
-search_input = st.text_input("Search query")
-
-# If the user has entered a search query, search the DataFrame for the query
-if search_input:
-    keywords = search_input.split()
-    results = search_dataframe(df, keywords)
-
-    # If any columns contain the search query, display them to the user
-    if results:
-        st.write("The following columns contain your search query:")
-        for result in results:
-            st.write(result)
-    else:
-        st.write("Your search query did not match any columns in the DataFrame.")
-
-# Display the DataFrame to the user
-st.write("Here is the DataFrame:")
-st.write(df)
-
-if __name__ == "__main__":
-    main()
-
+# Check if the search term matches any column
+if search_num is not None:
+    match_found = False
+    for col in df.columns:
+        if df[col].dtype in ['int64', 'float64'] and col != 'date':
+            if search_num in df[col].values:
+                st.write(f"{search_num} was assigned to '{col}'.")
+                match_found = True
+    if not match_found:
+        st.write(f"No match found for {search_num}.")
+else:
+    st.write("Enter Batch No.")
