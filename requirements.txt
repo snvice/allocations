@@ -1,5 +1,4 @@
 plotly
 matplotlib
 seaborn
-json
 streamlit_lottie
