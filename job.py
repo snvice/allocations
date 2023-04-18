@@ -86,17 +86,31 @@ st.write(df,index=False)
 
 ##########################################################################################################################################################
 
-# Transpose the DataFrame
-df_transposed = df.T
+# Define the app layout
+st.set_page_config(page_title='Column Search', page_icon=':mag:', layout='wide')
+st.title('Find Column by Keyword')
 
-# Create a search box in the sidebar
-search_term = st.sidebar.text_input("Search", "")
+# Add a search box for the keyword
+keyword = st.text_input('Enter a keyword to search:')
 
-# Filter the transposed DataFrame based on the search term
-filtered_cols = df_transposed.columns[df_transposed.apply(lambda col: search_term.lower() in str(col).lower(), axis=1)]
+# Define a function to search for the keyword in the dataframe columns
+def search_columns(keyword):
+    matches = []
+    for col in df.columns:
+        if keyword.lower() in col.lower():
+            matches.append(col)
+    return matches
 
-# Display the list of column names
-st.write(filtered_cols)
+# Display the search results
+if keyword:
+    matches = search_columns(keyword)
+    if matches:
+        st.write('The keyword "{}" was found in the following columns:'.format(keyword))
+        for match in matches:
+            st.write('- {}'.format(match))
+    else:
+        st.write('No matches found for the keyword "{}".'.format(keyword))
+
 
 
 
