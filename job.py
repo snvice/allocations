@@ -19,12 +19,6 @@ lottie_url = "https://raw.githubusercontent.com/snvice/allocations/main/giraffe.
 lottie_json = load_lottieurl(lottie_url)
 st_lottie(lottie_json)
 
-if st.button("Download"):
-    with st_lottie_spinner(lottie_json)
-        time.sleep(5)
-    st.balloons()
-
-
 #########################################################################################################################################################
 
 # Read the CSV file
