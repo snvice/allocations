@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
 
 # Set the page configuration to fit on a mobile screen
-st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 
 ##############################################################################################################################################################
 
