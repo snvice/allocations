@@ -86,18 +86,36 @@ st.write(df,index=False)
 
 ##########################################################################################################################################################
 
-# get user input for search word
-search_word = input("Enter a search word: ")
+# Define the function to search for keywords in the DataFrame
+def search_dataframe(df, keywords):
+    results = []
+    for column in df.columns:
+        for keyword in keywords:
+            if keyword.lower() in str(df[column]).lower():
+                results.append(column)
+                break
+    return results
 
-# iterate over columns in dataframe and search for search_word
-found_columns = []
-for col in df.columns:
-    if df[col].str.contains(search_word).any():
-        found_columns.append(col)
+# Create a text input box for the user to enter their search query
+search_input = st.text_input("Search query")
 
-# print results
-if len(found_columns) > 0:
-    print(f"The search word '{search_word}' was found in the following columns: {', '.join(found_columns)}")
-else:
-    print(f"The search word '{search_word}' was not found in any columns.")
+# If the user has entered a search query, search the DataFrame for the query
+if search_input:
+    keywords = search_input.split()
+    results = search_dataframe(df, keywords)
+
+    # If any columns contain the search query, display them to the user
+    if results:
+        st.write("The following columns contain your search query:")
+        for result in results:
+            st.write(result)
+    else:
+        st.write("Your search query did not match any columns in the DataFrame.")
+
+# Display the DataFrame to the user
+st.write("Here is the DataFrame:")
+st.write(df)
+
+if __name__ == "__main__":
+    main()
 
