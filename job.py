@@ -41,7 +41,7 @@ fig = go.Figure(go.Indicator(
             'value': 90}}))
 
 # Customize the layout of the figure
-fig.update_layout(paper_bgcolor = "lavender", font = {'color': "darkblue", 'family': "Arial"}, height=300, width=350)
+fig.update_layout(paper_bgcolor = "lavender", font = {'color': "darkblue", 'family': "Arial"}, height=300, width=400)
 
 # Display the figure in the Streamlit app
 st.plotly_chart(fig)
