@@ -108,6 +108,11 @@ def app():
     else:
         st.warning(f"The keyword '{keyword}' was not found in any of the columns.")
 
+        
+if __name__ == '__main__':
+    app()
+  
+
 
 
 
