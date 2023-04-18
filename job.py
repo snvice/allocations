@@ -10,13 +10,39 @@ import streamlit as st
 
 ##########################################################################################################################################################
 import streamlit as st
-import streamlit_lottie as stl
+from streamlit_ace import st_ace
 
-# Load the Lottie animation file
-lottie_url = "https://assets3.lottiefiles.com/packages/lf20_BHgrGd.json"
+# Define the Streamlit app
+def app():
+    # Set the title
+    st.title("Ace Animation Example")
 
-# Display the animation in Streamlit
-stl.st_lottie(load_lottie(lottie_url), speed=1, width=200, height=200)
+    # Define the JavaScript code for the animation
+    js = """
+        var box = document.createElement("div");
+        box.style.width = "100px";
+        box.style.height = "100px";
+        box.style.backgroundColor = "blue";
+        box.style.position = "absolute";
+        box.style.top = "50%";
+        box.style.left = "50%";
+        box.style.transform = "translate(-50%, -50%)";
+        document.body.appendChild(box);
+
+        var angle = 0;
+        setInterval(function() {
+            angle += 5;
+            box.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg)";
+        }, 50);
+    """
+
+    # Display the animation using the Ace editor
+    st_ace(value=js, language="javascript", theme="chrome", height=300)
+
+# Run the app
+if __name__ == "__main__":
+    app()
+
 
 
 
