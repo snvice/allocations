@@ -8,7 +8,8 @@ import streamlit as st
 
 st.set_page_config(page_title="scanning")
 
-st.title("Scan-tastic Squad")
+# Set up the title with a larger font size and a custom color
+st.markdown("<h1 style='text-align: center; color: #fc6203;'>Scan Squad</h1>", unsafe_allow_html=True)
 
 #########################################################################################################################################################
 
