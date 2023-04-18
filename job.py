@@ -5,13 +5,20 @@ import streamlit as st
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import seaborn as sns
+import streamlit_lottie as stl
 
-import time
 
-st.title("Welcome to my Streamlit App!")
+##########################################################################################################################################################
 
-with st.spinner('Loading...'):
-    time.sleep(2)
+import streamlit as st
+
+# Load the Lottie animation file
+lottie_animation = {"src": "https://lottiefiles.com/137171-welcome-hand"}
+
+# Display the animation in Streamlit
+st_lottie(load_lottie(lottie_animation), speed=1, width=100, height=100)
+
+#########################################################################################################################################################
 
 # Read the CSV file
 df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
