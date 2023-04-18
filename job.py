@@ -5,44 +5,18 @@ import streamlit as st
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import seaborn as sns
-import streamlit_lottie as stl
 import streamlit as st
 
 ##########################################################################################################################################################
+
 import streamlit as st
-from streamlit_ace import st_ace
+import st_lottie
 
-# Define the Streamlit app
-def app():
-    # Set the title
-    st.title("Ace Animation Example")
+# Load the Lottie animation
+welcome_lottie = st_lottie.load_animation('https://github.com/snvice/allocations/raw/main/welcome.json')
 
-    # Define the JavaScript code for the animation
-    js = """
-        var box = document.createElement("div");
-        box.style.width = "100px";
-        box.style.height = "100px";
-        box.style.backgroundColor = "blue";
-        box.style.position = "absolute";
-        box.style.top = "50%";
-        box.style.left = "50%";
-        box.style.transform = "translate(-50%, -50%)";
-        document.body.appendChild(box);
-
-        var angle = 0;
-        setInterval(function() {
-            angle += 5;
-            box.style.transform = "translate(-50%, -50%) rotate(" + angle + "deg)";
-        }, 50);
-    """
-
-    # Display the animation using the Ace editor
-    st_ace(value=js, language="javascript", theme="chrome", height=300)
-
-# Run the app
-if __name__ == "__main__":
-    app()
-
+# Render the Lottie animation
+st_lottie.json(welcome_lottie, speed=1, width=800, height=600, key="welcome")
 
 
 
