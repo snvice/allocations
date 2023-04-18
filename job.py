@@ -87,7 +87,7 @@ st.write(df,index=False)
 ##########################################################################################################################################################
 
 # Add a text input widget to allow the user to search
-search_term = st.text_input("Search")
+search_num = st.text_input("Search")
 
 # Check if the search term matches any column
 if search_num is not None:
