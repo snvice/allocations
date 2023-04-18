@@ -95,7 +95,7 @@ filtered_df = df[df["Name"].str.contains(search_term, case=False)]
 # Display the filtered DataFrame
 if not filtered_df.empty:
     st.write(f"Showing results for '{search_term}':")
-    st.write(filtered_df)
+    st.write(filtered_df.to_string(index=False))
 else:
     st.write("No results found.")
 
