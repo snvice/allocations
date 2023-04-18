@@ -23,7 +23,7 @@ fig = go.Figure(go.Indicator(
     mode = "gauge+number+delta",
     value = total_values,
     domain = {'x': [0, 1], 'y': [0, 1]},
-    title = {'text': "Pending Verification", 'font': {'size': 30}},
+    #title = {'text': "Pending Verification", 'font': {'size': 30}},
     delta = {'reference': reference, 'decreasing': {'color': "red"}, 'increasing': {'color': "green"}},
     gauge = {
         'axis': {'range': [None, 30], 'tickwidth': 1, 'tickcolor': "darkblue"},
@@ -41,7 +41,7 @@ fig = go.Figure(go.Indicator(
             'value': 90}}))
 
 # Customize the layout of the figure
-fig.update_layout(paper_bgcolor = "lavender", font = {'color': "darkblue", 'family': "Arial"}, height=250, width=300)
+fig.update_layout(paper_bgcolor = "lavender", font = {'color': "darkblue", 'family': "Arial"}, height=300, width=350)
 
 # Display the figure in the Streamlit app
 st.plotly_chart(fig)
