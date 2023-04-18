@@ -16,7 +16,7 @@ import streamlit as st
 lottie_animation = {"src": "https://lottiefiles.com/137171-welcome-hand"}
 
 # Display the animation in Streamlit
-st_lottie(load_lottie(lottie_animation), speed=1, width=100, height=100)
+stl(load_lottie(lottie_animation), speed=1, width=100, height=100)
 
 #########################################################################################################################################################
 
