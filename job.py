@@ -86,14 +86,17 @@ st.write(df,index=False)
 
 ##########################################################################################################################################################
 
+# Transpose the DataFrame
+df_transposed = df.T
+
 # Create a search box in the sidebar
 search_term = st.sidebar.text_input("Search", "")
 
-# Filter the DataFrame based on the search term
-filtered_df = df[df.apply(lambda row: search_term.lower() in str(row).lower(), axis=1)]
+# Filter the transposed DataFrame based on the search term
+filtered_cols = df_transposed.columns[df_transposed.apply(lambda col: search_term.lower() in str(col).lower(), axis=1)]
 
-# Display the filtered DataFrame
-st.dataframe(filtered_df)
+# Display the list of column names
+st.write(filtered_cols)
 
 
 
