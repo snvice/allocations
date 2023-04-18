@@ -95,9 +95,7 @@ def search_df(df, keyword):
 
 # Define the Streamlit app
 def app():
-    st.title('Find Column by Keyword')
-    st.write('Enter a keyword to find the column containing that keyword in the dataframe:')
-    
+       
     # Create the search box for user input
     keyword = st.text_input('Keyword', '')
 
