@@ -114,7 +114,7 @@ st.write(df,index=False)
 ##########################################################################################################################################################
 
 # Load the Lottie animation from a URL
-lottie_url_helloo = "https://assets6.lottiefiles.com/packages/lf20_5lTxAupekw.json"
+lottie_url_helloo = "https://assets9.lottiefiles.com/packages/lf20_Che8IZ2raX.json"
 lottie_helloo = load_lottieurl(lottie_url_helloo)
 
 # Display the animation with reduced dimensions
