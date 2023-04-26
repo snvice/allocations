@@ -52,7 +52,7 @@ def home():
     ##############################################################################################################################################################
 
     # Add a header
-    st.subheader('Ongoing tasks')
+    st.subheader('Continuing tasks')
 
     # Calculate the total number of values in the DataFrame
     total_values = df.count().sum()
@@ -89,6 +89,11 @@ def home():
     st.plotly_chart(fig, margin=(20, 20, 20, 20))
 
     #############################################################################################################################################################
+    
+    # Display the table
+    st.write(df,index=False)
+
+    ##########################################################################################################################################################
 
     # Add a header
     st.subheader('No. of assignments in progress')
@@ -115,21 +120,12 @@ def home():
 
     #############################################################################################################################################################
 
-    # Add a header
-    st.subheader('Allocations')
-
-    # Display the table
-    st.write(df,index=False)
-
-    ##########################################################################################################################################################
-
     # Load the Lottie animation from a URL
     lottie_url_helloo = "https://assets6.lottiefiles.com/private_files/lf30_jo7huq2d.json"
     lottie_helloo = load_lottieurl(lottie_url_helloo)
 
     # Display the animation with reduced dimensions
     st_lottie(lottie_helloo, speed=1, width=250, height=250, key="hello2")
-
 
     ###########################################################################################################################################################
 
