@@ -158,7 +158,7 @@ def home():
 
 # Second page
 def second_page():
-    st.title("Lvoh")
+    
     # Add your content for the second page here
     
     # Read the CSV file
