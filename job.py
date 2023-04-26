@@ -175,15 +175,17 @@ def second_page():
     # drop the date column in df1
     df1 = df1.drop('Date', axis=1)
 
-    # merge the dataframes using a left join
-    merged_df = pd.merge(df, df1, how='left')
 
-    # keep only the rows where the values in df1 are not present in df
-    result_df = merged_df[merged_df['lvo'].isnull()]
+    # Drop the 'date' column from df1
+    df1 = df1.drop(columns=['Date'])
+
+    # Merge the dataframes and keep only the values that are not present in df
+    df_new = pd.merge(df, df1, how='outer', indicator=True).query("_merge == 'right_only'").drop('_merge', axis=1)
+
    
     #####################################################################################################
  
-    st.write(result_df,index=False)
+    st.write(df_new,index=False)
 
 
 # Sidebar navigation
