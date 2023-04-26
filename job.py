@@ -173,7 +173,7 @@ def second_page():
     ####################################################################################################
 
     # drop the date column in df1
-    df1 = df1.drop('date', axis=1)
+    df1 = df1.drop('Date', axis=1)
 
     # merge the dataframes using a left join
     merged_df = pd.merge(df, df1, how='left', on=['name', 'code'])
