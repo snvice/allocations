@@ -165,7 +165,7 @@ def second_page():
     df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
 
     df5 = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/lvoh.csv')
-    df1 = df3.drop('Date', axis=1, inplace=True)
+    df1 = df5.drop('Date', axis=1, inplace=True)
 
 
 
