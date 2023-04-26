@@ -13,7 +13,10 @@ def home():
     
     ##########################################################################################################################################################
 
-    
+    import streamlit as st
+
+# rest of your code here
+
 
     # Set up the title with a larger font size, a custom color, and an underline
     st.markdown("<h1 style='text-align: center; color: #090979; font-size: 45px; text-decoration: overline dotted #33afff; font-family:Fixedsys;'>Scan Squad</h1>", unsafe_allow_html=True)
