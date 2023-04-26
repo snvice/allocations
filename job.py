@@ -1,14 +1,14 @@
 import streamlit as st
 from streamlit.components.v1 import components
+import pandas as pd
+import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+import seaborn as sns
+import streamlit as st
 
 # Home page
 def home():
-    import pandas as pd
-    import plotly.graph_objects as go
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-    import streamlit as st
-
+    
     ##########################################################################################################################################################
 
     st.set_page_config(page_title="scanning")
