@@ -164,23 +164,30 @@ def second_page():
     # Read the CSV file
     df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
 
-    df2 = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/lvoh.csv')
+    df5 = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/lvoh.csv')
+    df1 = df3.drop('Date', axis=1, inplace=True)
+
 
 
     st.subheader('Allocations')
     # Display the table
-    st.write(df2,index=False)
+    st.write(df5,index=False)
 
     st.subheader('Completed')
     
+    #####################################################################################################
+    ##################################################################################################
+    
+    
+    
     # merge the dataframes on all columns, with indicator column
-    merged_df = pd.merge(df, df2, how='outer', indicator=True)
+    merged_df = pd.merge(df, df1, how='outer', indicator=True)
 
     # filter for rows in df1 not present in df
-    df4 = merged_df.loc[merged_df['_merge'] == 'right_only', df2.columns]
+    df3 = merged_df.loc[merged_df['_merge'] == 'right_only', df1.columns]
 
     # print the resulting dataframe
-    st.write(df4,index=False)
+    st.write(df3,index=False)
 
 
 # Sidebar navigation
