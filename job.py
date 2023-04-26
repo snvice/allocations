@@ -97,7 +97,17 @@ def home():
     st.write(df,index=False)
 
     ##########################################################################################################################################################
+    
+    # Load the Lottie animation from a URL
+    lottie_url_hellooo = "https://assets5.lottiefiles.com/packages/lf20_PcXPXSc857.json"
+    lottie_hellooo = load_lottieurl(lottie_url_hellooo)
 
+    # Display the animation with reduced dimensions
+    st_lottie(lottie_hellooo, speed=1, width=200, height=200, key="hello3")
+    
+    
+    
+    #########################################################################################################################################################
     # Add a header
     st.subheader('')
 
