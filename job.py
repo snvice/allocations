@@ -173,14 +173,14 @@ def second_page():
 
     st.subheader('Completed')
     
-    # drop the 'size' column from df1
-    df3 = df2.drop('Date', axis=1)
-    
-    # concatenate the two dataframes and drop duplicates
-    df_both = pd.concat([df, df3]).drop_duplicates(keep=False)
+    # merge the dataframes on all columns, with indicator column
+    merged_df = pd.merge(df, df2, how='outer', indicator=True)
+
+    # filter for rows in df1 not present in df
+    df4 = merged_df.loc[merged_df['_merge'] == 'right_only', df1.columns]
 
     # print the resulting dataframe
-    st.write(df_both,index=False)
+    st.write(df4,index=False)
 
 
 # Sidebar navigation
