@@ -176,7 +176,7 @@ def second_page():
     df1 = df1.drop('Date', axis=1)
 
     # merge the dataframes using a left join
-    merged_df = pd.merge(df, df1, how='left', on=['name', 'code'])
+    merged_df = pd.merge(df, df1, how='left')
 
     # keep only the rows where the values in df1 are not present in df
     result_df = merged_df[merged_df['lvo'].isnull()]
