@@ -185,7 +185,7 @@ def second_page():
 
 
 # Sidebar navigation
-menu = ["Home", "Admin"]
+menu = ["Home", "Admininja"]
 choice = st.sidebar.selectbox("Select a page", menu)
 
 # Display the selected page
