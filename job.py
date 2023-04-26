@@ -175,18 +175,12 @@ def second_page():
     
     # drop the 'size' column from df1
     df3 = df2.drop('Date', axis=1)
-
-    # merge the two dataframes on the 'filename' column
-    merged_df = pd.merge(df, df3, how='outer', indicator=True)
-
-    # filter the rows where the file is missing in one of the dataframes
-    missing_files_df = merged_df[merged_df['_merge'] != 'both']
-
-    # drop the '_merge' column
-    missing_files_df.drop('_merge', axis=1, inplace=True)
+    
+    # concatenate the two dataframes and drop duplicates
+    df_both = pd.concat([df, df3]).drop_duplicates(keep=False)
 
     # print the resulting dataframe
-    st.write(missing_files_df,index=False)
+    st.write(df_both,index=False)
 
 
 # Sidebar navigation
