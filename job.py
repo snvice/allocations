@@ -86,7 +86,7 @@ def home():
     fig.update_layout(paper_bgcolor = "white", font = {'color': "darkblue", 'family': "Arial"}, height=340, width=400)
 
     # Display the figure in the Streamlit app
-    st.plotly_chart(fig, margin=(20, 20, 20, 20))
+    st.plotly_chart(fig, margin=(15, 15, 15, 15))
 
     #############################################################################################################################################################
     
