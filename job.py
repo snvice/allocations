@@ -176,8 +176,7 @@ def second_page():
     df1 = df1.drop('Date', axis=1)
 
     # Filter df1 to keep only rows that are not present in df
-    df_new = df1[~df1.isin(df)].dropna()
-
+    df_new = df1[~df1.isin(df)]
    
     #####################################################################################################
  
