@@ -39,7 +39,7 @@ def home():
     lottie_hello = load_lottieurl(lottie_url_hello)
 
     # Display the animation with reduced dimensions
-    st_lottie(lottie_hello, speed=1, width=250, height=250, key="hello")
+    st_lottie(lottie_hello, speed=1, width=225, height=225, key="hello")
 
     #########################################################################################################################################################
 
