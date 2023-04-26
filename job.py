@@ -1,146 +1,192 @@
-import pandas as pd
-import plotly.graph_objects as go
-import matplotlib.pyplot as plt
-import seaborn as sns
 import streamlit as st
+from streamlit.components.v1 import components
 
-##########################################################################################################################################################
+# Home page
+def home():
+    import pandas as pd
+    import plotly.graph_objects as go
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import streamlit as st
 
-st.set_page_config(page_title="scanning")
+    ##########################################################################################################################################################
 
-# Set up the title with a larger font size, a custom color, and an underline
-st.markdown("<h1 style='text-align: center; color: #090979; font-size: 45px; text-decoration: overline dotted #33afff; font-family:Fixedsys;'>Scan Squad</h1>", unsafe_allow_html=True)
+    st.set_page_config(page_title="scanning")
 
-#########################################################################################################################################################
+    # Set up the title with a larger font size, a custom color, and an underline
+    st.markdown("<h1 style='text-align: center; color: #090979; font-size: 45px; text-decoration: overline dotted #33afff; font-family:Fixedsys;'>Scan Squad</h1>", unsafe_allow_html=True)
 
-import time
-import requests
-import streamlit as st
-from streamlit_lottie import st_lottie
+    #########################################################################################################################################################
 
-def load_lottieurl(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
+    import time
+    import requests
+    import streamlit as st
+    from streamlit_lottie import st_lottie
 
-# Load the Lottie animation from a URL
-lottie_url_hello = "https://assets9.lottiefiles.com/packages/lf20_Che8IZ2raX.json"
-lottie_hello = load_lottieurl(lottie_url_hello)
+    def load_lottieurl(url: str):
+        r = requests.get(url)
+        if r.status_code != 200:
+            return None
+        return r.json()
 
-# Display the animation with reduced dimensions
-st_lottie(lottie_hello, speed=1, width=250, height=250, key="hello")
+    # Load the Lottie animation from a URL
+    lottie_url_hello = "https://assets9.lottiefiles.com/packages/lf20_Che8IZ2raX.json"
+    lottie_hello = load_lottieurl(lottie_url_hello)
 
-#########################################################################################################################################################
+    # Display the animation with reduced dimensions
+    st_lottie(lottie_hello, speed=1, width=250, height=250, key="hello")
 
-# Read the CSV file
-df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
+    #########################################################################################################################################################
 
-# Set the page configuration to fit on a mobile screen
-#st.set_page_config(layout="centered")
+    # Read the CSV file
+    df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
 
-##############################################################################################################################################################
+    # Set the page configuration to fit on a mobile screen
+    #st.set_page_config(layout="centered")
 
-# Add a header
-st.subheader('Ongoing tasks')
+    ##############################################################################################################################################################
 
-# Calculate the total number of values in the DataFrame
-total_values = df.count().sum()
+    # Add a header
+    st.subheader('Ongoing tasks')
 
-# Calculate the reference value for the delta indicator
-reference = df.count().sum() - (df.size - df.count().sum()) 
+    # Calculate the total number of values in the DataFrame
+    total_values = df.count().sum()
 
-# Create the figure for the indicator
-fig = go.Figure(go.Indicator(
-    mode = "gauge+number+delta",
-    value = total_values,
-    domain = {'x': [0, 1], 'y': [0, 1]},
-    #title = {'text': "Pending Verification", 'font': {'size': 20}},
-    delta = {'reference': reference, 'decreasing': {'color': "red"}, 'increasing': {'color': "green"}},
-    gauge = {
-        'axis': {'range': [None, 30], 'tickwidth': 1, 'tickcolor': "darkblue"},
-        'bar': {'color': "darkblue"},
-        'bgcolor': "white",
-        'borderwidth': 3,
-        'bordercolor': "gray",
-        'steps': [
-            {'range': [0, 12], 'color': 'limegreen'},
-            {'range': [12, 24], 'color': 'yellowgreen'},
-            {'range': [24, 36], 'color': 'Crimson'}],
-        'threshold': {
-            'line': {'color': "red", 'width': 4},
-            'thickness': 0.75,
-            'value': 90}}))
+    # Calculate the reference value for the delta indicator
+    reference = df.count().sum() - (df.size - df.count().sum()) 
 
-# Customize the layout of the figure
-fig.update_layout(paper_bgcolor = "white", font = {'color': "darkblue", 'family': "Arial"}, height=340, width=400)
+    # Create the figure for the indicator
+    fig = go.Figure(go.Indicator(
+        mode = "gauge+number+delta",
+        value = total_values,
+        domain = {'x': [0, 1], 'y': [0, 1]},
+        #title = {'text': "Pending Verification", 'font': {'size': 20}},
+        delta = {'reference': reference, 'decreasing': {'color': "red"}, 'increasing': {'color': "green"}},
+        gauge = {
+            'axis': {'range': [None, 30], 'tickwidth': 1, 'tickcolor': "darkblue"},
+            'bar': {'color': "darkblue"},
+            'bgcolor': "white",
+            'borderwidth': 3,
+            'bordercolor': "gray",
+            'steps': [
+                {'range': [0, 12], 'color': 'limegreen'},
+                {'range': [12, 24], 'color': 'yellowgreen'},
+                {'range': [24, 36], 'color': 'Crimson'}],
+            'threshold': {
+                'line': {'color': "red", 'width': 4},
+                'thickness': 0.75,
+                'value': 90}}))
 
-# Display the figure in the Streamlit app
-st.plotly_chart(fig, margin=(20, 20, 20, 20))
+    # Customize the layout of the figure
+    fig.update_layout(paper_bgcolor = "white", font = {'color': "darkblue", 'family': "Arial"}, height=340, width=400)
 
-#############################################################################################################################################################
+    # Display the figure in the Streamlit app
+    st.plotly_chart(fig, margin=(20, 20, 20, 20))
 
-# Add a header
-st.subheader('No. of assignments in progress')
+    #############################################################################################################################################################
 
-# Count non-null values for each column and plot as horizontal stacked bar chart
-fig, ax = plt.subplots()
-df.notnull().sum().plot(kind='barh', stacked=True, color=sns.color_palette('rocket'))
+    # Add a header
+    st.subheader('No. of assignments in progress')
 
-# Set labels and title
-ax.set_xlabel('Count')
-#ax.set_title('Pending')
+    # Count non-null values for each column and plot as horizontal stacked bar chart
+    fig, ax = plt.subplots()
+    df.notnull().sum().plot(kind='barh', stacked=True, color=sns.color_palette('rocket'))
 
-# Remove the background and show only the lines
-ax.set_facecolor('none')
-ax.spines['bottom'].set_color('gray')
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
-ax.spines['left'].set_visible(False)
-ax.tick_params(axis='y', which='both', length=0)
+    # Set labels and title
+    ax.set_xlabel('Count')
+    #ax.set_title('Pending')
 
-# Display the plot in Streamlit
-st.pyplot(fig)
+    # Remove the background and show only the lines
+    ax.set_facecolor('none')
+    ax.spines['bottom'].set_color('gray')
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_visible(False)
+    ax.tick_params(axis='y', which='both', length=0)
 
-
-#############################################################################################################################################################
-
-# Add a header
-st.subheader('Allocations')
-
-# Display the table
-st.write(df,index=False)
-
-##########################################################################################################################################################
-
-# Load the Lottie animation from a URL
-lottie_url_helloo = "https://assets6.lottiefiles.com/private_files/lf30_jo7huq2d.json"
-lottie_helloo = load_lottieurl(lottie_url_helloo)
-
-# Display the animation with reduced dimensions
-st_lottie(lottie_helloo, speed=1, width=250, height=250, key="hello2")
+    # Display the plot in Streamlit
+    st.pyplot(fig)
 
 
-###########################################################################################################################################################
+    #############################################################################################################################################################
 
-# Add a text input widget to allow the user to search
-search_term = st.text_input("Search")
+    # Add a header
+    st.subheader('Allocations')
 
-# Add a button to trigger the search
-search_button = st.button("Search")
+    # Display the table
+    st.write(df,index=False)
 
-# Convert dataframe to string
-df_str = df.astype(str)
+    ##########################################################################################################################################################
 
-# Check if the search term matches any columns
-if search_button and search_term:
-    match_found = False
-    for col in df_str.columns:
-        for i, row in enumerate(df_str[col]):
-            if search_term in row:
-                st.write(f" {col}  {row}.")
-                match_found = True
-    if not match_found:
-        st.write(f"No match found for '{search_term}'.")
+    # Load the Lottie animation from a URL
+    lottie_url_helloo = "https://assets6.lottiefiles.com/private_files/lf30_jo7huq2d.json"
+    lottie_helloo = load_lottieurl(lottie_url_helloo)
+
+    # Display the animation with reduced dimensions
+    st_lottie(lottie_helloo, speed=1, width=250, height=250, key="hello2")
 
 
+    ###########################################################################################################################################################
+
+    # Add a text input widget to allow the user to search
+    search_term = st.text_input("Search")
+
+    # Add a button to trigger the search
+    search_button = st.button("Search")
+
+    # Convert dataframe to string
+    df_str = df.astype(str)
+
+    # Check if the search term matches any columns
+    if search_button and search_term:
+        match_found = False
+        for col in df_str.columns:
+            for i, row in enumerate(df_str[col]):
+                if search_term in row:
+                    st.write(f" {col}  {row}.")
+                    match_found = True
+        if not match_found:
+            st.write(f"No match found for '{search_term}'.")
+
+
+    # Add your content for the home page here
+
+# Second page
+def second_page():
+    st.title("Lvoh")
+    # Add your content for the second page here
+    # Read the CSV file
+    df2 = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/lvoh.csv')
+
+
+    st.subheader('Allocations')
+    # Display the table
+    st.write(df2,index=False)
+
+    st.subheader('Completed')
+    
+    # drop the 'size' column from df1
+    df3 = df2.drop('Date', axis=1, inplace=True)
+
+    # merge the two dataframes on the 'filename' column
+    merged_df = pd.merge(df, df3, how='outer', indicator=True)
+
+    # filter the rows where the file is missing in one of the dataframes
+    missing_files_df = merged_df[merged_df['_merge'] != 'both']
+
+    # drop the '_merge' column
+    missing_files_df.drop('_merge', axis=1, inplace=True)
+
+    # print the resulting dataframe
+    st.write(missing_files_df,index=False)
+
+
+# Sidebar navigation
+menu = ["Home", "Admin"]
+choice = st.sidebar.selectbox("Select a page", menu)
+
+# Display the selected page
+if choice == "Home":
+    home()
+elif choice == "Admin":
+    second_page()
