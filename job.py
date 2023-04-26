@@ -180,7 +180,7 @@ def second_page():
 
     st.subheader('Completed')
     ####################################################################################################
-
+    
     # drop the date column in df1
     df1 = df1.drop('Date', axis=1)
 
@@ -191,6 +191,32 @@ def second_page():
     #####################################################################################################
  
     st.write(df_new,index=False)
+    
+    ##########################################################################################################################
+    
+    # Create a function to download the DataFrame as an Excel file
+    def download_excel(df):
+        output = BytesIO()
+        writer = pd.ExcelWriter(output, engine='xlsxwriter')
+        df.to_excel(writer, sheet_name='Sheet1', index=False)
+        writer.save()
+        processed_data = output.getvalue()
+        return processed_data
+
+    # Create a download button for the Excel file
+    button = st.download_button(
+        label="Download Excel",
+        data=download_excel(df_new),
+        file_name='df_new.xlsx',
+        mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+
+    # Display the DataFrame in the Streamlit app
+    st.write(df_new, index=False)
+
+    # Display the download button
+st.write(button)
+    ###################################################################################################################
 
 
 # Sidebar navigation
