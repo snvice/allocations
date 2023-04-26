@@ -124,7 +124,7 @@ def home():
     #############################################################################################################################################################
 
     # Load the Lottie animation from a URL
-    lottie_url_helloo = "https://assets6.lottiefiles.com/private_files/lf30_jo7huq2d.json"
+    lottie_url_helloo = "https://assets4.lottiefiles.com/private_files/lf30_gd2unfh8.json"
     lottie_helloo = load_lottieurl(lottie_url_helloo)
 
     # Display the animation with reduced dimensions
