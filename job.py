@@ -177,7 +177,7 @@ def second_page():
     merged_df = pd.merge(df, df2, how='outer', indicator=True)
 
     # filter for rows in df1 not present in df
-    df4 = merged_df.loc[merged_df['_merge'] == 'right_only', df1.columns]
+    df4 = merged_df.loc[merged_df['_merge'] == 'right_only', df2.columns]
 
     # print the resulting dataframe
     st.write(df4,index=False)
