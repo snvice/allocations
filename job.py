@@ -191,5 +191,5 @@ choice = st.sidebar.selectbox("Select a page", menu)
 # Display the selected page
 if choice == "Home":
     home()
-elif choice == "Admin":
+elif choice == "Admininja":
     second_page()
