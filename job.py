@@ -161,7 +161,7 @@ def second_page():
     st.title("Lvoh")
     # Add your content for the second page here
     # Read the CSV file
-    df2 = pd.read_csv('https://github.com/snvice/allocations/blob/main/lvoh.csv')
+    df2 = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/lvoh.csv')
 
 
     st.subheader('Allocations')
