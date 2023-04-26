@@ -109,7 +109,7 @@ def home():
     
     #########################################################################################################################################################
     # Add a header
-    st.subheader('')
+    # st.subheader('')
 
     # Count non-null values for each column and plot as horizontal stacked bar chart
     fig, ax = plt.subplots()
