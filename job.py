@@ -175,10 +175,6 @@ def second_page():
     # drop the date column in df1
     df1 = df1.drop('Date', axis=1)
 
-
-    # Drop the 'date' column from df1
-    df1 = df1.drop(columns=['Date'])
-
     # Merge the dataframes and keep only the values that are not present in df
     df_new = pd.merge(df, df1, how='outer', indicator=True).query("_merge == 'right_only'").drop('_merge', axis=1)
 
