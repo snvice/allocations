@@ -171,7 +171,7 @@ def second_page():
     st.subheader('Completed')
     
     # drop the 'size' column from df1
-    df3 = df2.drop('Date', axis=1, inplace=True)
+    df3 = df2.drop('Date', axis=1)
 
     # merge the two dataframes on the 'filename' column
     merged_df = pd.merge(df, df3, how='outer', indicator=True)
