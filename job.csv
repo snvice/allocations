@@ -4,6 +4,7 @@ S35 - NRB,,,S40 - NRB,S33 - NRB
 S42 - NRB,,,S43 - NRB,S36 - NRB
 ,,,,
 *,*,*,*,*
-,,,asmbly S39,
+A1 - NRB -BC,A7 - NRB - BC,A2 - NRB - BC,asmbly S39,
 ,,,asmbly S33,
 ,,,asmbly S36,
+,,,A5 - NRB - BC,
