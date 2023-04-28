@@ -58,7 +58,7 @@ def home():
     total_values = df.count().sum()
 
     # Calculate the reference value for the delta indicator
-    reference = df.count().sum() - (df.size - df.count().sum()) 
+    reference = df.count().sum() - (df.size - df.count().sum()) - 5
 
     # Create the figure for the indicator
     fig = go.Figure(go.Indicator(
@@ -138,7 +138,7 @@ def home():
     lottie_helloo = load_lottieurl(lottie_url_helloo)
 
     # Display the animation with reduced dimensions
-    st_lottie(lottie_helloo, speed=1, width=250, height=250, key="hello2")
+    #st_lottie(lottie_helloo, speed=1, width=250, height=250, key="hello2")
 
     ##########################################################################################################################################################
 
