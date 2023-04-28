@@ -55,10 +55,10 @@ def home():
     st.subheader('Continuing tasks')
 
     # Calculate the total number of values in the DataFrame
-    total_values = df.count().sum()
+    total_values = df.count().sum() - 5
 
     # Calculate the reference value for the delta indicator
-    reference = df.count().sum() - (df.size - df.count().sum()) - 5
+    reference = df.count().sum() - (df.size - df.count().sum()) 
 
     # Create the figure for the indicator
     fig = go.Figure(go.Indicator(
