@@ -184,13 +184,15 @@ def second_page():
     # drop the date column in df1
     df1 = df1.drop('Date', axis=1)
 
-    # Filter df1 to keep only rows that are not present in df
-    # Get the values in df1 that are not present in df
-    df_new = df1[~df1.isin(df.to_dict('list')).all(axis=1)]
+    # Get a boolean DataFrame indicating which values in df1 are not in df
+    not_in_df = ~df1.isin(df)
+
+    # Create a DataFrame with the values in df1 that are not in df
+    df_diff = df1[not_in_df]
    
     #####################################################################################################
  
-    st.write(df_new,index=False)
+    st.write(df_diff,index=False)
     
     ##########################################################################################################################
 
