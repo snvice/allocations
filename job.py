@@ -141,6 +141,32 @@ def home():
     st_lottie(lottie_helloo, speed=1, width=250, height=250, key="hello2")
 
     ###########################################################################################################################################################
+    
+    # Add your content for the second page here
+    
+    # Read the CSV file
+    df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
+    df1 = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/lvoh.csv')
+    
+    st.subheader('Allocations')
+    # Display the table
+    #st.write(df1,index=False)
+
+    st.subheader('Completed')
+    ####################################################################################################
+    
+    # drop the date column in df1
+    df1 = df1.drop('Date', axis=1)
+
+    # Get a boolean DataFrame indicating which values in df1 are not in df
+    not_in_df = ~df1.isin(df)
+
+    # Create a DataFrame with the values in df1 that are not in df
+    df_diff = df1[not_in_df]
+   
+    st.write(df_diff,index=False)
+    
+    ##########################################################################################################################################################
 
     # Add a text input widget to allow the user to search
     search_term = st.text_input("Search")
@@ -192,7 +218,7 @@ def second_page():
    
     #####################################################################################################
  
-    st.write(df_diff,index=False)
+    #st.write(df_diff,index=False)
     
     ##########################################################################################################################
 
