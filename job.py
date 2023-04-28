@@ -169,10 +169,16 @@ def home():
 def second_page():
     
     # Add your content for the second page here
+    # Add a header
+    st.subheader('All Allocations')
+    df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/lvoh.csv')     
+    st.write(df,index=False)
     
+    st.subheader('')
+    
+    st.subheader('Complete')
     # Read the CSV file
-    df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/complete.csv')
-     
+    df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/complete.csv')     
     st.write(df,index=False)
     
     ##########################################################################################################################
