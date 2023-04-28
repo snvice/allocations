@@ -66,7 +66,7 @@ def home():
         value = total_values,
         domain = {'x': [0, 1], 'y': [0, 1]},
         #title = {'text': "Pending Verification", 'font': {'size': 20}},
-        delta = {'reference': reference, 'decreasing': {'color': "red"}, 'increasing': {'color': "green"}},
+        #delta = {'reference': reference, 'decreasing': {'color': "red"}, 'increasing': {'color': "green"}},
         gauge = {
             'axis': {'range': [None, 30], 'tickwidth': 1, 'tickcolor': "darkblue"},
             'bar': {'color': "darkblue"},
