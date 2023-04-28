@@ -171,9 +171,9 @@ def second_page():
     # Add your content for the second page here
     
     # Read the CSV file
-    df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/job.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/snvice/allocations/main/complete.csv')
      
-    #st.write(df_diff,index=False)
+    st.write(df,index=False)
     
     ##########################################################################################################################
 
