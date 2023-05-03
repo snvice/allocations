@@ -55,7 +55,7 @@ def home():
     st.subheader('Continuing tasks')
 
     # Calculate the total number of values in the DataFrame
-    total_values = df.count().sum() - 5
+    total_values = df.count().sum() 
 
     # Calculate the reference value for the delta indicator
     reference = df.count().sum() - (df.size - df.count().sum()) 
