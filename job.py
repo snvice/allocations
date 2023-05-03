@@ -68,7 +68,7 @@ def home():
         #title = {'text': "Pending Verification", 'font': {'size': 20}},
         #delta = {'reference': reference, 'decreasing': {'color': "red"}, 'increasing': {'color': "green"}},
         gauge = {
-            'axis': {'range': [None, 30], 'tickwidth': 1, 'tickcolor': "darkblue"},
+            'axis': {'range': [None, total_values], 'tickwidth': 1, 'tickcolor': "darkblue"},
             'bar': {'color': "darkblue"},
             'bgcolor': "white",
             'borderwidth': 3,
